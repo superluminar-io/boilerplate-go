@@ -1,8 +1,6 @@
 # AWS Serverless Application Model w/ Go
 
-[![MIT License](https://badgen.now.sh/badge/License/MIT/blue)](https://github.com/sbstjn/faas-sam-lambda-go/blob/master/LICENSE.md)
-[![FaaS.club](https://badgen.now.sh/badge/FaaS/CLUB/00C387)](https://faas.club)
-[![FaaS Makefile](https://badgen.now.sh/badge/FaaS/Makefile/purple)](https://github.com/sbstjn/faas-makefile)
+[![MIT License](https://badgen.now.sh/badge/License/MIT/blue)](https://github.com/superluminar-io/boilerplate-go/blob/master/LICENSE.md)
 
 > Example AWS Lambda Function w/ Go
 

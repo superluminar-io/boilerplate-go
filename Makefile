@@ -1,9 +1,19 @@
-PROJECT_NAME = sam-lambda-go
+include scripts/serverless.mk
 
-include .faas
+PATH_FUNCTIONS := ./src/
+LIST_FUNCTIONS := $(subst $(PATH_FUNCTIONS),,$(wildcard $(PATH_FUNCTIONS)*))
 
+clean:
+	@ rm -rf ./dist
+
+test: export GO111MODULE=on
 test:
 	@ go test ./...
 
+build-%: export GO111MODULE=on
+build-%:
+	@ go build -o ./dist/handler/$* ./src/$*
+
+build: clean
 build:
-	@ GOOS=linux go build -o dist/handler ./src
+	@ make $(foreach FUNCTION,$(LIST_FUNCTIONS),build-$(FUNCTION))

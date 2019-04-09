@@ -12,10 +12,14 @@ type event struct {
 }
 
 func handle(ctx context.Context, e event) (string, error) {
-	fmt.Printf("%s invoked", os.Getenv("ProjectID"))
+	fmt.Printf(
+		"Function of %s-%s invoked",
+		os.Getenv("PREFIX"),
+		os.Getenv("PROJECT"),
+	)
 
 	if e.ShouldFail == true {
-		return "", errors.New("Failed on purpose")
+		return "", errors.New("Error")
 	}
 
 	return "Done", nil

@@ -24,6 +24,10 @@ func TestHandleError(t *testing.T) {
 		t.Error("Expected error")
 	}
 
+	if err.Error() != "Error" {
+		t.Error("Unexpected error message")
+	}
+
 	if res != "" {
 		t.Error("Unexpected response")
 	}
