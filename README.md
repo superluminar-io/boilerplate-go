@@ -10,12 +10,14 @@
 
 ```bash
 # Deploy AWS Lambda function
+
 $ > make configure build package deploy
 ```
 
 ## Test
 
 ```bash
-# Run pytest
+# Run tests
+
 $ > make test
 ```
