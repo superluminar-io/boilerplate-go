@@ -1,4 +1,5 @@
 include scripts/serverless.mk
+include scripts/cloud9.mk
 
 PATH_FUNCTIONS := ./src/
 LIST_FUNCTIONS := $(subst $(PATH_FUNCTIONS),,$(wildcard $(PATH_FUNCTIONS)*))
