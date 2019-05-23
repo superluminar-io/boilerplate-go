@@ -8,5 +8,6 @@ $(TMP)/$(GOLANG_TARBALL):
 cloud9: $(TMP)/$(GOLANG_TARBALL)
 	@ sudo tar -C /usr/local -xzf $<
 	@ echo 'export PATH=/usr/local/go/bin:$$PATH' >> ~/.bashrc
+	@ echo 'export PREFIX=$$C9_PROJECT' >> ~/.bashrc
 	@ echo 'Done. Now run the command below.'
 	@ echo 'source ~/.bashrc'
