@@ -1,4 +1,5 @@
-GOLANG_TARBALL = go1.12.5.linux-amd64.tar.gz
+TMP=/tmp
+GOLANG_TARBALL=go1.12.5.linux-amd64.tar.gz
 
 $(TMP)/$(GOLANG_TARBALL):
 	@ wget -P $(TMP) https://dl.google.com/go/$(GOLANG_TARBALL)
