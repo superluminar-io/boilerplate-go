@@ -3,7 +3,7 @@ PROJECT := url-shortener
 
 AWS_BUCKET_NAME := $(PREFIX)-$(PROJECT)-artifacts
 AWS_STACK_NAME := $(PREFIX)-$(PROJECT)-stack
-AWS_REGION ?= eu-west-1
+AWS_REGION ?= eu-central-1
 AWS_PROFILE ?= default 
 
 FILE_TEMPLATE = ./template.yml
