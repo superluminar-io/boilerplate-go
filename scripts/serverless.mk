@@ -1,4 +1,4 @@
-PREFIX ?= example
+PREFIX ?= genial
 PROJECT := url-shortener
 
 AWS_BUCKET_NAME := $(PREFIX)-$(PROJECT)-artifacts

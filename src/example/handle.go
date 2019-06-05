@@ -1,9 +1,8 @@
 package main
 
 import (
-	"context"
-	"errors"
 	"fmt"
+	"github.com/aws/aws-lambda-go/events"
 	"os"
 )
 
@@ -11,16 +10,15 @@ type event struct {
 	ShouldFail bool `json:"should_fail"`
 }
 
-func handle(ctx context.Context, e event) (string, error) {
+func handle(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	fmt.Printf(
 		"Function of %s-%s invoked",
 		os.Getenv("PREFIX"),
 		os.Getenv("PROJECT"),
 	)
 
-	if e.ShouldFail == true {
-		return "", errors.New("Error")
-	}
-
-	return "Done", nil
+	return events.APIGatewayProxyResponse{
+		StatusCode: 200,
+		Body:       "Example String",
+	}, nil
 }

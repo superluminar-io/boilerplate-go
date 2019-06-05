@@ -2,16 +2,48 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 
 Resources:
-  Function:
+  
+  ResolveFunction:
     Type: AWS::Serverless::Function
     Properties:
       Runtime: go1.x
-      Timeout: 180
-      Handler: dist/handler/example
+      Handler: dist/handler/resolve
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref DynamoDBTable
+      Events:
+        ResolveEvent:
+          Type: Api
+          Properties:
+            Path: /{id}
+            Method: get
       Environment:
         Variables:
-          PREFIX: !Ref PREFIX
-          PROJECT: !Ref PROJECT
+          DYNAMODB_TABLE_NAME: !Ref DynamoDBTable
+
+  CreateFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: go1.x
+      Handler: dist/handler/create
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref DynamoDBTable
+      Events:
+        CreateEvent:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
+      Environment:
+        Variables:
+          DYNAMODB_TABLE_NAME: !Ref DynamoDBTable
+            
+  DynamoDBTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: !Sub ${PREFIX}-${PROJECT}
+    
 
 Parameters:
   PREFIX:
@@ -24,3 +56,5 @@ Outputs:
     Value: !Ref PREFIX
   PROJECT:
     Value: !Ref PROJECT
+  Endpoint:
+    Value: !Sub https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod
