@@ -9,6 +9,7 @@ cloud9: $(TMP)/$(GOLANG_TARBALL)
 	@ sudo tar -C /usr/local -xzf $<
 	@ echo 'export PATH=/usr/local/go/bin:$$HOME/go/bin:$$PATH' >> ~/.bashrc
 	@ /usr/local/go/bin/go get github.com/nsf/gocode
+	@ sudo cp $$HOME/go/bin/gocode /usr/local/bin
 	@ echo 'Done. Now run the command below.'
 	@ echo
 	@ echo 'source ~/.bashrc'
